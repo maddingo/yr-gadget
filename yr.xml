@@ -9,7 +9,7 @@
 function parseXml(xml) {
 }
 
-$("#weather").append("Weather from: "+$(location).attr("pathname")+"<br/>);
+$("#weather").append("Weather from: "+$(location).attr("pathname")+"<br/>");
 </script>
     ]]>
   </Content>
