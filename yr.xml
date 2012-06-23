@@ -21,7 +21,7 @@ function response(xml) {
 }
 
 
-document.getElementById("weather").innerHTML = ownerDocument.location;
+document.getElementById("weather").innerHTML = getElementById("weather").ownerDocument.location;
 //$("#weather").append(document.referrer);
 
 // gadgets.util.registerOnLoadHandler(makeDOMRequest);
