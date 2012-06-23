@@ -20,7 +20,8 @@ function makeDomRequest() {
 function response(xml) {
 }
 
-document.getElementById("weather").innerHTML = document.rererrer;
+
+document.getElementById("weather").innerHTML = ownerDocument.location;
 //$("#weather").append(document.referrer);
 
 // gadgets.util.registerOnLoadHandler(makeDOMRequest);
