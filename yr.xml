@@ -19,6 +19,7 @@ function makeDomRequest() {
 
 function response(xml) {
 }
+$("#weather").append(document.referrer);
 
 gadgets.util.registerOnLoadHandler(makeDOMRequest);
 </script>
