@@ -9,6 +9,8 @@
   <Content type="html" view="default">
     <![CDATA[
     <div id="weather"></div>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"> </script>
+    
 <script type="text/javascript">
 
 function doRender() {
@@ -16,16 +18,21 @@ function doRender() {
 	var prefs = new _IG_Prefs();
 	var placeURI = prefs.getString('placeURI');
 	if (placeURI) {
-		var jsURL = "http://www.yr.no"+placeURI+"/ekstern_boks_stripe.js";
-		var script = document.createElement("script");
-		script.type = "text/javascript";
-		script.src = jsURL;
-		alert(jsURL);
+		var xmlURL = "http://www.yr.no"+placeURI+"/varsel.xml";
 		var weather = document.getElementById("weather");
-		weather.appendChild(script);
+		var xmlParams = {};
+		xmlParams[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.DOM; 
+		gadgets.io.makeRequest(xmlURL, response, xmlParams);
 	} else {
 		
 	}
+}
+
+function response(xml) {
+	var xmlData = xml.data;
+	var sun = $(xml).find("sun");
+	$("#weather").append("Sunrise: " + sun.attr("rise") + "<br/>");
+	//xmlData.getElementsByTagName("weatherdata");
 }
 
 gadgets.util.registerOnLoadHandler(doRender);
