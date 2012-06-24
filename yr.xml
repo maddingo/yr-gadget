@@ -37,7 +37,7 @@ function url_query( srcUrl, query ) {
  
 var url_param = url_query(document.getElementById("weather").ownerDocument.location, 'url');
 if( url_param ) {
-	url_param = url_param.replace(/[^\?]*\?//);
+	url_param = url_param.replace(/[^\?]*\?/, "");
 	alert(url_param);
 }
 
