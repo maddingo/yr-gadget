@@ -31,7 +31,7 @@ function makeDomRequest() {
     params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.DOM;  
 	var url_param = url_query(document.getElementById("weather").ownerDocument.location, 'url');
 	if( url_param ) {
-		url_param = decodeURIComponent("http://www.yr.no/url_param.replace(/[^\?]*\?/, ""));
+		url_param = decodeURIComponent("http://www.yr.no/"+url_param.replace(/[^\?]*\?/, ""));
 		
 		$("#weather").append("<a href=\""+url_param+"\">været fra yr.no</a><br/>");
 		//gadgets.io.makeRequest(url_param, response, params);
