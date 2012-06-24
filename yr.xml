@@ -31,10 +31,10 @@ function response(xml) {
 	var sun = data.getElementsByTagName("sun").item(0);
 	var weather = document.getElementById("weather");
 	weather.appendChild("Sunrise: " + sun.getAttribute("rise") + "<br/>");
-	weather.appendChild("Sunset: " + sun.getAttribute("set") + "<br/>";
+	weather.appendChild("Sunset: " + sun.getAttribute("set") + "<br/>");
 	
 	var detailsList = weather.getElementsByTagName("tabular");
-	weather.appendChild("Details: " + detailsList.length + "<br/>";
+	weather.appendChild("Details: " + detailsList.length + "<br/>");
 }
 
 gadgets.util.registerOnLoadHandler(doRender);
