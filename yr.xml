@@ -1,31 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
   <ModulePrefs title="yr.no weather" >
-  	<Require feature="setprefs" /> 
   </ModulePrefs>
   <UserPref
-  	name="place"
+  	name="placeURI"
+  	dislay_name="Place URI"
   	required="true"/>
-  <Content type="html">
+  <Content type="html" view="default,canvas">
     <![CDATA[
     <div id="weather"></div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"> </script>
 <script type="text/javascript">
 
-// Parse URL Queries
-function url_query( srcUrl, query ) {
-	query = query.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-	var expr = "[\\?&]"+query+"=([^&#]*)";
-	var regex = new RegExp( expr );
-	var results = regex.exec( srcUrl );
-	if( results !== null ) {
-		return results[1];
-		return decodeURIComponent(results[1].replace(/\+/g, " "));
-	} else {
-		return false;
-	}
+function doRender() {
+	// setup variables
+	var prefs = new _IG_Prefs();
+	var placeURI = prefs.getString('placeURI');
+	$("#weather").append("<p>").append(placeURI);
 }
- 
+    
 function makeDomRequest() {
 	var params = {};  
     params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.DOM;  
@@ -43,7 +36,7 @@ function response(xml) {
 }
 
 
-gadgets.util.registerOnLoadHandler(makeDomRequest);
+gadgets.util.registerOnLoadHandler(doRender);
 </script>
     ]]>
   </Content>
