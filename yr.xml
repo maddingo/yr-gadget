@@ -38,11 +38,7 @@ var urlParams = {};
     }
 })();
 
-//document.getElementById("weather").innerHTML = document.getElementById("weather").ownerDocument.location;
-$("#weather").append(urlParams["url"]);
-$("#weather").append("<br/>");
-
-// gadgets.util.registerOnLoadHandler(makeDOMRequest);
+// gadgets.util.registerOnLoadHandler(makeDomRequest);
 </script>
     ]]>
   </Content>
