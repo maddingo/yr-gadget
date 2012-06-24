@@ -11,15 +11,6 @@
     <div id="weather"></div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"> </script>
 <script type="text/javascript">
-function makeDomRequest() {
-	var params = {};  
-    params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.DOM;  
-    var url = "http://www.yr.no/sted/Hellas/Attika/P%C3%B3ros/varsel.xml";  
-    gadgets.io.makeRequest(url, response, params);
-}
-
-function response(xml) {
-}
 
 // Parse URL Queries
 function url_query( srcUrl, query ) {
@@ -35,13 +26,22 @@ function url_query( srcUrl, query ) {
 	}
 }
  
-var url_param = url_query(document.getElementById("weather").ownerDocument.location, 'url');
-if( url_param ) {
-	url_param = url_param.replace(/[^\?]*\?/, "");
-	alert(url_param);
+function makeDomRequest() {
+	var params = {};  
+    params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.DOM;  
+	var url_param = url_query(document.getElementById("weather").ownerDocument.location, 'url');
+	if( url_param ) {
+		url_param = url_param.replace(/[^\?]*\?/, "");
+	}
+	$("#weather").append("<h1>"+url_param+"</h1>");
+    //gadgets.io.makeRequest(url_param, response, params);
 }
 
-// gadgets.util.registerOnLoadHandler(makeDomRequest);
+function response(xml) {
+}
+
+
+gadgets.util.registerOnLoadHandler(makeDomRequest);
 </script>
     ]]>
   </Content>
