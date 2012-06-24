@@ -9,6 +9,7 @@
   <Content type="html">
     <![CDATA[
     <div id="weather"></div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"> </script>
 <script type="text/javascript">
 function makeDomRequest() {
 	var params = {};  
@@ -20,6 +21,18 @@ function makeDomRequest() {
 function response(xml) {
 }
 
+var urlParams = {};
+(function () {
+    var match,
+        pl     = /\+/g,  // Regex for replacing addition symbol with a space
+        search = /([^&=]+)=?([^&]*)/g,
+        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
+        //query  = window.location.search.substring(1);
+        query = document.getElementById("weather").ownerDocument.location;
+
+    while (match = search.exec(query))
+       urlParams[decode(match[1])] = decode(match[2]);
+})();
 
 document.getElementById("weather").innerHTML = document.getElementById("weather").ownerDocument.location;
 //$("#weather").append(document.referrer);
