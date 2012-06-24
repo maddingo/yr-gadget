@@ -6,35 +6,22 @@
   	name="placeURI"
   	dislay_name="Place URI"
   	required="true"/>
-  <Content type="html" view="default,canvas">
+  <Content type="html" view="default">
     <![CDATA[
     <div id="weather"></div>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"> </script>
 <script type="text/javascript">
 
 function doRender() {
 	// setup variables
 	var prefs = new _IG_Prefs();
 	var placeURI = prefs.getString('placeURI');
-	$("#weather").append("<p>").append(placeURI);
-}
-    
-function makeDomRequest() {
-	var params = {};  
-    params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.DOM;  
-	var url_param = url_query(document.getElementById("weather").ownerDocument.location, 'url');
-	if( url_param ) {
-		url_param = decodeURIComponent("http://www.yr.no/"+url_param.replace(/[^\?]*\?/, ""));
-		
-		$("#weather").append("<a target=\"_blank\" href=\""+url_param+"\">været fra yr.no</a><br/>");
-		//gadgets.io.makeRequest(url_param, response, params);
-	}
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.src = "http://www.yr.no"+placeURI+"/ekstern_boks_stripe.js";
 	
+	var weather = document.getElementById("weather");
+	weather.appendChild(script);
 }
-
-function response(xml) {
-}
-
 
 gadgets.util.registerOnLoadHandler(doRender);
 </script>
