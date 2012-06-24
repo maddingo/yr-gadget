@@ -34,7 +34,7 @@ var urlParams = {};
     	var key = decode(match[1]);
     	var val = decode(match[2]);
        urlParams[decode(match[1])] = decode(match[2]);
-       $(#weather).append(key + ": " + val + "<br/>");
+       $("#weather").append(key + ": " + val + "<br/>");
     }
 })();
 
