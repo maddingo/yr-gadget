@@ -33,7 +33,7 @@ function makeDomRequest() {
 	if( url_param ) {
 		url_param = decodeURIComponent("http://www.yr.no/"+url_param.replace(/[^\?]*\?/, ""));
 		
-		$("#weather").append("<a href=\""+url_param+"\">været fra yr.no</a><br/>");
+		$("#weather").append("<a target=\"_blank\" href=\""+url_param+"\">været fra yr.no</a><br/>");
 		//gadgets.io.makeRequest(url_param, response, params);
 	}
 	
