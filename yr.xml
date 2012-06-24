@@ -33,7 +33,7 @@ function response(xml) {
 	html += ("Sunrise: " + sun.getAttribute("rise") + "<br/>");
 	html += ("Sunset: " + sun.getAttribute("set") + "<br/>");
 	
-	var detailsList = data.getElementsByTagName("forecast").item(0).getElementsByTagName("tabular").getElementsByTagName("time");
+	var detailsList = data.getElementsByTagName("forecast").item(0).getElementsByTagName("tabular").item(0).getElementsByTagName("time");
 	html += "<ol>";
 	for (var i = 0; i < datailList.length; i++) {
 		html += "<li>";
