@@ -30,8 +30,12 @@ var urlParams = {};
         //query  = window.location.search.substring(1);
         query = document.getElementById("weather").ownerDocument.location;
 
-    while (match = search.exec(query))
+    while (match = search.exec(query)) {
+    	var key = decode(match[1]);
+    	var val = decode(match[2]);
        urlParams[decode(match[1])] = decode(match[2]);
+       $(#weather).append(key + ": " + val + "<br/>");
+    }
 })();
 
 //document.getElementById("weather").innerHTML = document.getElementById("weather").ownerDocument.location;
