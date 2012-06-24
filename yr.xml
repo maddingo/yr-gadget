@@ -21,22 +21,24 @@ function makeDomRequest() {
 function response(xml) {
 }
 
-var urlParams = {};
-(function () {
-    var match,
-        pl     = /\+/g,  // Regex for replacing addition symbol with a space
-        search = /([^&=]+)=?([^&]*)/g,
-        decode = function (s) { return decodeURIComponent(s.replace(pl, " ")); },
-        //query  = window.location.search.substring(1);
-        query = document.getElementById("weather").ownerDocument.location;
-
-    while (match = search.exec(query)) {
-    	var key = decode(match[1]);
-    	var val = decode(match[2]);
-       urlParams[decode(match[1])] = decode(match[2]);
-       $("#weather").append(key + ": " + val + "<br/>");
-    }
-})();
+// Parse URL Queries
+function url_query( srcUrl, query ) {
+	query = query.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+	var expr = "[\\?&]"+query+"=([^&#]*)";
+	var regex = new RegExp( expr );
+	var results = regex.exec( srcUrl );
+	if( results !== null ) {
+		return results[1];
+		return decodeURIComponent(results[1].replace(/\+/g, " "));
+	} else {
+		return false;
+	}
+}
+ 
+var url_param = url_query(document.getElementById("weather").ownerDocument.location, 'url');
+if( url_param ) {
+	alert(url_param); // "yes"
+}
 
 // gadgets.util.registerOnLoadHandler(makeDomRequest);
 </script>
