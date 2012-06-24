@@ -35,14 +35,14 @@ function response(xml) {
 	
 	var forecast = data.getElementsByTagName("forecast").item(0);
 	var tabular = forecast.getElementsByTagName("tabular").item(0);
-	var detailList = tabular.children;
+	var detailList = tabular.childNodes;
 	html += "<ol>";
 	for (var i = 0; i < datailList.length; i++) {
 		html += "<li>";
 		var detail = detailList.item(i);
 		
 		html += ("from " + detail.getAttribute("from") + " to " + detail.getAttribute("to") + ": ");
-		var childNodes = detail.child
+		var childNodes = detail.childNodes;
 		for (var j = 0; j < childNodes.length; j++) {
 			var node = childNodes.item(j).firstChild;
 			if (node.nodeName == "precipitation") {
