@@ -35,7 +35,8 @@ var urlParams = {};
 })();
 
 //document.getElementById("weather").innerHTML = document.getElementById("weather").ownerDocument.location;
-$("#weather").append(urlPrams["url"]);
+$("#weather").append(urlParams["url"]);
+$("#weather").append("<br/>");
 
 // gadgets.util.registerOnLoadHandler(makeDOMRequest);
 </script>
