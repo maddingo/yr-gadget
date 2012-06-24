@@ -8,9 +8,7 @@
   	required="true"/>
   <Content type="html" view="default">
     <![CDATA[
-    <div id="weather"></div>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"> </script>
-    
+    <div id="weather"></div>    
 <script type="text/javascript">
 
 function doRender() {
@@ -31,7 +29,12 @@ function doRender() {
 function response(xml) {
 	var data = xml.data.getElementsByTagName("weatherdata").item(0);
 	var sun = data.getElementsByTagName("sun").item(0);
-	$("#weather").append("Sunrise: " + sun.getAttribute("rise") + "<br/>");
+	var weather = document.getElementById("weather");
+	weather.appendChild("Sunrise: " + sun.getAttribute("rise") + "<br/>");
+	weather.appendChild("Sunset: " + sun.getAttribute("set") + "<br/>";
+	
+	var detailsList = weather.getElementsByTagName("tabular");
+	weather.appendChild("Details: " + detailsList.length + "<br/>";
 }
 
 gadgets.util.registerOnLoadHandler(doRender);
