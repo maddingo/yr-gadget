@@ -29,12 +29,15 @@ function doRender() {
 function response(xml) {
 	var data = xml.data.getElementsByTagName("weatherdata").item(0);
 	var sun = data.getElementsByTagName("sun").item(0);
-	var weather = document.getElementById("weather");
-	weather.appendChild("Sunrise: " + sun.getAttribute("rise") + "<br/>");
-	weather.appendChild("Sunset: " + sun.getAttribute("set") + "<br/>");
+	var html = "";
+	html += ("Sunrise: " + sun.getAttribute("rise") + "<br/>");
+	html += ("Sunset: " + sun.getAttribute("set") + "<br/>");
 	
 	var detailsList = weather.getElementsByTagName("tabular");
 	weather.appendChild("Details: " + detailsList.length + "<br/>");
+
+	document.getElementById("weather").innerHTML = html;
+
 }
 
 gadgets.util.registerOnLoadHandler(doRender);
