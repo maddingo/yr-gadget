@@ -35,7 +35,7 @@ function response(xml) {
 	
 	var forecast = data.getElementsByTagName("forecast").item(0);
 	var tabular = forecast.getElementsByTagName("tabular").item(0);
-	var detailList = tabular.getElementsByTagName("time");
+	var detailList = tabular.children;
 	html += "<ol>";
 	for (var i = 0; i < datailList.length; i++) {
 		html += "<li>";
