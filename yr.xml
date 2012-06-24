@@ -29,10 +29,9 @@ function doRender() {
 }
 
 function response(xml) {
-	var xmlData = xml.data;
-	var sun = $(xml).find("sun");
-	$("#weather").append("Sunrise: " + sun.attr("rise") + "<br/>");
-	//xmlData.getElementsByTagName("weatherdata");
+	var data = xml.data.getElementsByTagName("weatherdata").item(0);
+	var sun = data.getElementsByTagName("sun").item(0);
+	$("#weather").append("Sunrise: " + sun.getAttribute("rise") + "<br/>");
 }
 
 gadgets.util.registerOnLoadHandler(doRender);
